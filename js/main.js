@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let primaryLogoIndex = 0; // Index for the main logo
     let glitchInterval = 200; // Duration for the glitch effect in milliseconds
     let primaryLogo = logos[primaryLogoIndex];
+    let timeoutId;
 
     function showRandomLogo() {
         // Remove the active/shake classes from all logos
@@ -12,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         primaryLogo.classList.add("active");
 
         // Trigger the glitch effect at random intervals
-        setTimeout(() => {
+        timeoutId = setTimeout(() => {
             primaryLogo.classList.remove("active");
             let randomLogoIndex = Math.floor(Math.random() * logos.length);
 
@@ -20,22 +21,43 @@ document.addEventListener("DOMContentLoaded", function () {
             while (randomLogoIndex === primaryLogoIndex) {
                 randomLogoIndex = Math.floor(Math.random() * logos.length);
             }
-            logos[randomLogoIndex].classList.add("active", "shake");
 
-            // Switch back to the primary logo after glitching
-            setTimeout(() => {
-                logos[randomLogoIndex].classList.remove("active", "shake");
-                primaryLogo.classList.add("active", "shake");
+            requestAnimationFrame(() => {
+                logos[randomLogoIndex].classList.add("active", "shake");
 
-                // Remove the shake effect after completion
+                // Switch back to the primary logo after glitching
                 setTimeout(() => {
-                    primaryLogo.classList.remove("shake");
-                }, 500);
-            }, glitchInterval);
+                    requestAnimationFrame(() => {
+                        logos[randomLogoIndex].classList.remove(
+                            "active",
+                            "shake"
+                        );
+                        primaryLogo.classList.add("active");
+
+                        // Remove the shake effect after completion
+                        setTimeout(() => {
+                            primaryLogo.classList.remove("shake");
+                        }, 200);
+                    });
+                }, glitchInterval);
+            });
         }, Math.random() * (5000 - 1000) + 1000); // timeout between 1 and 5 seconds
     }
 
-    setInterval(showRandomLogo, Math.random() * (5000 - 1000) + 1000); // Random interval between 1 and 5 seconds
+    // Ensure only one interval is running at a time
+    let intervalId = setInterval(
+        showRandomLogo,
+        Math.random() * (5000 - 1000) + 1000
+    ); // Random interval between 1 and 5 seconds
 
     primaryLogo.classList.add("active");
+
+    // Clear any existing interval before setting a new one
+    if (intervalId) {
+        clearInterval(intervalId);
+    }
+    intervalId = setInterval(
+        showRandomLogo,
+        Math.random() * (5000 - 1000) + 1000
+    );
 });

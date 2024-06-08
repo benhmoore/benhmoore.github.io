@@ -21,16 +21,22 @@
                 margin: 0;
                 padding: 0;
                 color: black;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                text-align: center;
             }
 
             .hero-container,
             .about-container {
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 height: 100vh;
                 min-height: 400px;
-                position: relative;
+                width: 100%;
             }
 
             .about-container {
@@ -72,6 +78,11 @@
                 text-decoration: underline;
             }
 
+            nav a:focus {
+                font-weight: 600;
+                text-decoration: underline;
+            }
+
             .logo img {
                 display: none;
             }
@@ -104,6 +115,12 @@
                 animation: shake 0.2s;
             }
 
+            @media (prefers-reduced-motion: reduce) {
+                .shake {
+                    animation: none;
+                }
+            }
+
             /* 
         @media (prefers-color-scheme: dark) {
             body {
@@ -126,89 +143,120 @@
         </style>
     </head>
     <body>
-        <div class="hero-container">
-            <div class="container">
-                <div class="logo">
+        <section class="hero-container">
+            <header class="container">
+                <div class="logo" aria-live="polite">
                     <img
                         src="img/logo-light.svg"
-                        alt="Personal Logo"
+                        alt="Ben Moore's personal logo"
                         aria-label="Ben Moore"
                         class="logo-light active"
-                        height="250px"
                     />
                     <img
                         src="img/crystal_final.webp"
-                        alt="Personal Logo"
+                        alt="Ben Moore's personal logo"
                         aria-label="Ben Moore"
                         class="logo-light"
-                        height="250px"
                     />
                     <img
                         src="img/pastel_final.webp"
-                        alt="Personal Logo"
+                        alt="Ben Moore's personal logo"
                         aria-label="Ben Moore"
                         class="logo-light"
-                        height="250px"
                     />
                     <img
                         src="img/shadows_final.webp"
-                        alt="Personal Logo"
+                        alt="Ben Moore's personal logo"
                         aria-label="Ben Moore"
                         class="logo-light"
-                        height="250px"
+                    />
+                    <img
+                        src="img/logo-render-v1.webp"
+                        alt="Ben Moore's personal logo"
+                        aria-label="Ben Moore"
+                        class="logo-light"
+                    />
+                    <img
+                        src="img/logo-render-v2.webp"
+                        alt="Ben Moore's personal logo"
+                        aria-label="Ben Moore"
+                        class="logo-light"
+                    />
+                    <img
+                        src="img/logo-render-v3.webp"
+                        alt="Ben Moore's personal logo"
+                        aria-label="Ben Moore"
+                        class="logo-light"
+                    />
+                    <img
+                        src="img/logo-photo-v1.webp"
+                        alt="Ben Moore's personal logo"
+                        aria-label="Ben Moore"
+                        class="logo-light"
                     />
                     <img
                         src="img/logo-light-v1.svg"
-                        alt="Personal Logo"
+                        alt="Ben Moore's personal logo"
                         aria-label="Ben Moore"
                         class="logo-light"
-                        height="250px"
                     />
                     <img
                         src="img/logo-light-v2.svg"
-                        alt="Personal Logo"
+                        alt="Ben Moore's personal logo"
                         aria-label="Ben Moore"
                         class="logo-light"
-                        height="250px"
                     />
                     <img
                         src="img/logo-light-v3.svg"
-                        alt="Personal Logo"
+                        alt="Ben Moore's personal logo"
                         aria-label="Ben Moore"
                         class="logo-light"
-                        height="250px"
                     />
                     <img
                         src="img/logo-light-v4.svg"
-                        alt="Personal Logo"
+                        alt="Ben Moore's personal logo"
                         aria-label="Ben Moore"
                         class="logo-light"
-                        height="250px"
                     />
                     <img
                         src="img/logo-light-v5.svg"
-                        alt="Personal Logo"
+                        alt="Ben Moore's personal logo"
                         aria-label="Ben Moore"
                         class="logo-light"
-                        height="250px"
                     />
                     <img
                         src="img/logo-light-v6.svg"
-                        alt="Personal Logo"
+                        alt="Ben Moore's personal logo"
                         aria-label="Ben Moore"
                         class="logo-light"
-                        height="250px"
                     />
                     <img
                         src="img/logo-light-v7.svg"
-                        alt="Personal Logo"
+                        alt="Ben Moore's personal logo"
                         aria-label="Ben Moore"
                         class="logo-light"
-                        height="250px"
+                    />
+                    <img
+                        src="img/logo-light-v8.webp"
+                        alt="Ben Moore's personal logo"
+                        aria-label="Ben Moore"
+                        class="logo-light"
+                    />
+                    <img
+                        src="img/logo-light-v9.svg"
+                        alt="Ben Moore's personal logo"
+                        aria-label="Ben Moore"
+                        class="logo-light"
+                    />
+                    <img
+                        src="img/logo-light-v10.svg"
+                        alt="Ben Moore's personal logo"
+                        aria-label="Ben Moore"
+                        class="logo-light"
                     />
                 </div>
                 <div class="bio">
-                    <h1>Ben Moore</h1>
+                    <h1>Ben H. Moore</h1>
                     <p>
                         I write code and<br />
                         sometimes make art.
@@ -227,8 +275,8 @@
                         >LinkedIn</a
                     >
                 </nav>
-            </div>
-        </div>
+            </header>
+        </section>
         <script src="js/main.js"></script>
     </body>
 </html>
