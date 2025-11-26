@@ -8,13 +8,43 @@
             name="description"
             content="Ben Moore is a computer scientist and artist currently based in Mississippi, USA."
         />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Ben Moore (@benhmoore)" />
+        <meta
+            property="og:description"
+            content="Ben Moore is a computer scientist and artist currently based in Mississippi, USA."
+        />
+        <meta property="og:url" content="https://benhmoore.github.io/" />
+        <meta
+            property="og:image"
+            content="https://benhmoore.github.io/img/logo-light.svg"
+        />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Ben Moore (@benhmoore)" />
+        <meta
+            name="twitter:description"
+            content="Ben Moore is a computer scientist and artist currently based in Mississippi, USA."
+        />
+        <meta
+            name="twitter:image"
+            content="https://benhmoore.github.io/img/logo-light.svg"
+        />
+
+        <link rel="canonical" href="https://benhmoore.github.io/" />
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap"
+            rel="stylesheet"
+        />
+
         <style>
-            @font-face {
-                font-family: "Source Code Pro";
-                src: url("font/SourceCodePro-VariableFont_wght.ttf")
-                    format("truetype");
-                font-display: swap;
-            }
 
             body {
                 font-family: "Source Code Pro", monospace;
@@ -29,8 +59,7 @@
                 text-align: center;
             }
 
-            .hero-container,
-            .about-container {
+            .hero-container {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -38,11 +67,6 @@
                 height: 100vh;
                 min-height: 400px;
                 width: 100%;
-            }
-
-            .about-container {
-                background-color: black;
-                color: white;
             }
 
             .bio {
@@ -57,7 +81,6 @@
 
             .container {
                 text-align: center;
-                /* padding: 2rem; */
             }
 
             nav {
@@ -76,13 +99,13 @@
             }
 
             nav a:hover {
-                font-weight: 500;
                 text-decoration: underline;
             }
 
-            nav a:focus {
-                font-weight: 600;
+            nav a:focus-visible {
                 text-decoration: underline;
+                outline: 2px solid currentColor;
+                outline-offset: 2px;
             }
 
             .logo img {
@@ -122,139 +145,118 @@
                     animation: none;
                 }
             }
-
-            /* 
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: black;
-                color: white;
-            }
-
-            nav {
-                color: white;
-            }
-
-            .logo-light {
-                display: none;
-            }
-`
-            .logo-dark {
-                display: block;
-            }
-        } */
         </style>
     </head>
     <body>
-        <section class="hero-container">
-            <header class="container">
-                <div class="logo" aria-live="polite">
+        <main class="hero-container">
+            <div class="container">
+                <div class="logo">
                     <img
                         src="img/logo-light.svg"
                         alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
                         class="logo-light active"
                     />
                     <img
                         src="img/crystal_final.webp"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/pastel_final.webp"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/shadows_final.webp"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/logo-render-v1.webp"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/logo-render-v2.webp"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/logo-render-v3.webp"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/logo-photo-v1.webp"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/logo-light-v1.svg"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/logo-light-v2.svg"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/logo-light-v3.svg"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/logo-light-v4.svg"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/logo-light-v5.svg"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/logo-light-v6.svg"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/logo-light-v7.svg"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/logo-light-v8.webp"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/logo-light-v9.svg"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                     <img
                         src="img/logo-light-v10.svg"
-                        alt="Ben Moore's personal logo"
-                        aria-label="Ben Moore"
+                        alt=""
                         class="logo-light"
+                        loading="lazy"
                     />
                 </div>
                 <div class="bio">
@@ -265,20 +267,21 @@
                     </p>
                 </div>
                 <nav aria-label="Site navigation">
-                    <a href="https://github.com/benhmoore" target="_blank"
+                    <a href="https://github.com/benhmoore" target="_blank" rel="noopener noreferrer"
                         >GitHub</a
                     >
-                    <a href="https://instagram.com/benhmoore" target="_blank"
+                    <a href="https://instagram.com/benhmoore" target="_blank" rel="noopener noreferrer"
                         >Instagram</a
                     >
                     <a
                         href="https://www.linkedin.com/in/benhmoore/"
                         target="_blank"
+                        rel="noopener noreferrer"
                         >LinkedIn</a
                     >
                 </nav>
-            </header>
-        </section>
+            </div>
+        </main>
         <script src="js/main.js" defer></script>
     </body>
 </html>

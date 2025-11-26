@@ -1,63 +1,58 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Respect user's motion preferences
+    const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion) {
+        return; // Exit early, keep primary logo static
+    }
+
     const logos = document.querySelectorAll(".logo img");
-    let primaryLogoIndex = 0; // Index for the main logo
-    let glitchInterval = 200; // Duration for the glitch effect in milliseconds
-    let primaryLogo = logos[primaryLogoIndex];
+    const primaryLogoIndex = 0;
+    const glitchDuration = 200;
+    const primaryLogo = logos[primaryLogoIndex];
+
     let timeoutId;
+    let intervalId;
+
+    function getRandomDelay() {
+        return Math.random() * 4000 + 1000; // 1-5 seconds
+    }
 
     function showRandomLogo() {
-        // Remove the active/shake classes from all logos
-        logos.forEach((logo) => logo.classList.remove("active", "shake"));
+        clearTimeout(timeoutId);
 
-        // Display the primary logo
-        primaryLogo.classList.add("active");
-
-        // Trigger the glitch effect at random intervals
         timeoutId = setTimeout(() => {
+            // Pick a random non-primary logo
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * logos.length);
+            } while (randomIndex === primaryLogoIndex);
+
+            // Swap to random logo with shake
             primaryLogo.classList.remove("active");
-            let randomLogoIndex = Math.floor(Math.random() * logos.length);
+            logos[randomIndex].classList.add("active", "shake");
 
-            // Ensure the random logo is different from the primary logo
-            while (randomLogoIndex === primaryLogoIndex) {
-                randomLogoIndex = Math.floor(Math.random() * logos.length);
-            }
-
-            requestAnimationFrame(() => {
-                logos[randomLogoIndex].classList.add("active", "shake");
-
-                // Switch back to the primary logo after glitching
-                setTimeout(() => {
-                    requestAnimationFrame(() => {
-                        logos[randomLogoIndex].classList.remove(
-                            "active",
-                            "shake"
-                        );
-                        primaryLogo.classList.add("active");
-
-                        // Remove the shake effect after completion
-                        setTimeout(() => {
-                            primaryLogo.classList.remove("shake");
-                        }, 200);
-                    });
-                }, glitchInterval);
-            });
-        }, Math.random() * (5000 - 1000) + 1000); // timeout between 1 and 5 seconds
+            // Swap back after glitch duration
+            setTimeout(() => {
+                logos[randomIndex].classList.remove("active", "shake");
+                primaryLogo.classList.add("active");
+            }, glitchDuration);
+        }, getRandomDelay());
     }
 
-    // Ensure only one interval is running at a time
-    let intervalId = setInterval(
-        showRandomLogo,
-        Math.random() * (5000 - 1000) + 1000
-    ); // Random interval between 1 and 5 seconds
-
+    // Initialize
     primaryLogo.classList.add("active");
+    intervalId = setInterval(showRandomLogo, getRandomDelay());
 
-    // Clear any existing interval before setting a new one
-    if (intervalId) {
-        clearInterval(intervalId);
-    }
-    intervalId = setInterval(
-        showRandomLogo,
-        Math.random() * (5000 - 1000) + 1000
-    );
+    // Cleanup on page hide (for SPA navigation or tab close)
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            clearInterval(intervalId);
+            clearTimeout(timeoutId);
+        } else if (!prefersReducedMotion) {
+            intervalId = setInterval(showRandomLogo, getRandomDelay());
+        }
+    });
 });
