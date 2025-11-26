@@ -52,21 +52,28 @@
                 margin: 0;
                 padding: 0;
                 color: black;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 100vh;
                 text-align: center;
             }
 
-            .hero-container {
+            .hero-container,
+            .projects-container {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                height: 100vh;
-                min-height: 400px;
+                min-height: 100vh;
                 width: 100%;
+                padding: 2rem;
+                box-sizing: border-box;
+            }
+
+            .projects-container {
+                background-color: black;
+                color: white;
+            }
+
+            .projects-container a {
+                color: white;
             }
 
             .bio {
@@ -141,8 +148,141 @@
             }
 
             @media (prefers-reduced-motion: reduce) {
-                .shake {
+                .shake,
+                .scroll-indicator svg {
                     animation: none;
+                }
+            }
+
+            .projects-header {
+                margin-bottom: 3rem;
+            }
+
+            .projects-header h2 {
+                font-size: 1em;
+                font-weight: 600;
+                margin: 0;
+            }
+
+            .project {
+                max-width: 32rem;
+                text-align: left;
+            }
+
+            .project h3 {
+                font-size: 1em;
+                font-weight: 600;
+                margin: 0 0 0.5rem 0;
+            }
+
+            .project p {
+                margin: 0 0 1rem 0;
+                line-height: 1.6;
+            }
+
+            .project-features {
+                list-style: none;
+                padding: 0;
+                margin: 0 0 1rem 0;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .project-features li {
+                font-size: 0.85em;
+                padding: 0.25rem 0.5rem;
+                border: 1px solid #444;
+                border-radius: 0.25rem;
+            }
+
+            .project-links {
+                display: flex;
+                gap: 1rem;
+            }
+
+            .project-links a:hover {
+                text-decoration: underline;
+            }
+
+            .scroll-indicator {
+                position: absolute;
+                bottom: 2rem;
+                left: 50%;
+                transform: translateX(-50%);
+                opacity: 0.5;
+                transition: opacity 0.2s;
+                color: black;
+            }
+
+            .scroll-indicator:hover {
+                opacity: 1;
+            }
+
+            .scroll-indicator svg {
+                width: 1.5rem;
+                height: 1.5rem;
+                animation: bounce 2s ease-in-out infinite;
+            }
+
+            @keyframes bounce {
+                0%, 100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(0.4rem);
+                }
+            }
+
+            .hero-container {
+                position: relative;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            .project-image {
+                width: 140%;
+                max-width: 48rem;
+                margin-bottom: 1.5rem;
+                margin-left: -20%;
+            }
+
+            @media (max-width: 640px) {
+                .logo img.active {
+                    height: 10rem;
+                }
+
+                .hero-container,
+                .projects-container {
+                    padding: 1.5rem;
+                }
+
+                .project {
+                    max-width: 100%;
+                }
+
+                .project-image {
+                    width: 100%;
+                    margin-left: 0;
+                }
+
+                .project-features {
+                    justify-content: flex-start;
+                }
+
+                .project-features li {
+                    font-size: 0.75em;
+                }
+
+                nav {
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                }
+
+                nav a {
+                    margin: 0;
                 }
             }
         </style>
@@ -267,6 +407,7 @@
                     </p>
                 </div>
                 <nav aria-label="Site navigation">
+                    <a href="#projects">Projects</a>
                     <a href="https://github.com/benhmoore" target="_blank" rel="noopener noreferrer"
                         >GitHub</a
                     >
@@ -281,7 +422,48 @@
                     >
                 </nav>
             </div>
+            <a href="#projects" class="scroll-indicator" aria-label="Scroll to projects">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </a>
         </main>
+        <section id="projects" class="projects-container">
+            <div class="projects-header">
+                <h2>Projects</h2>
+            </div>
+            <article class="project">
+                <img
+                    src="img/code-ally-screenshot.png"
+                    alt="Code Ally terminal interface showing an AI agent exploring a codebase"
+                    class="project-image"
+                    loading="lazy"
+                />
+                <h3>Code Ally</h3>
+                <p>
+                    An AI pair programmer that lives in your terminal.
+                    Powered by local LLMs via Ollama, it keeps your code
+                    private while providing intelligent assistance through
+                    recursive agents that can delegate tasks, a plugin
+                    system for custom tools, and persistent sessions that
+                    remember context across restarts.
+                </p>
+                <ul class="project-features">
+                    <li>Local-first via Ollama</li>
+                    <li>Recursive agent delegation</li>
+                    <li>Python/Node.js plugins</li>
+                    <li>30+ built-in tools</li>
+                </ul>
+                <div class="project-links">
+                    <a
+                        href="https://github.com/benhmoore/CodeAlly-TS"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >GitHub</a
+                    >
+                </div>
+            </article>
+        </section>
         <script src="js/main.js" defer></script>
     </body>
 </html>
